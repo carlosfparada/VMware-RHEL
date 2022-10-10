@@ -1,0 +1,20 @@
+---
+
+- name: Get dynamic Fortinet nodes and assign them to groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - utils_dynamic_hosts
+
+- name: Fortinet FortiGate roles
+  hosts: fortigate
+  connection: httpapi
+  gather_facts: no
+  vars_files: 
+    - main.yml
+    - "{{infra}}.yml"  
+  roles:
+    - fortigate_create_rules
+
+

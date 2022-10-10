@@ -1,0 +1,22 @@
+---
+
+- name: Get dynamic Fortinet nodes and assign them to groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - utils_dynamic_hosts
+
+- name: Fortinet FortiManager roles
+  hosts: fortimanager
+  connection: httpapi
+  gather_facts: no
+  vars_files: 
+    - main.yml
+    - "{{infra}}.yml"
+  roles:
+    - fortimanager_add_fortianalyzer
+    - fortimanager_add_fortigate   # not supported by FortiManager trial license
+    - fortimanager_config_settings
+    - fortimanager_gather_facts
+  

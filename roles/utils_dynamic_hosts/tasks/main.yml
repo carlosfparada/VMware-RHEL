@@ -1,0 +1,28 @@
+---
+
+# - name: Refresh inventory
+#   ansible.builtin.meta: refresh_inventory
+
+- name: Get RHEL node
+  set_fact:
+    fortianalyzer: "{{ item }}"
+  loop: "{{ groups['all'] }}"
+  when: item | regex_search("^rhel-1_(.*)$") 
+
+- name: Add RHEL node to the rhel group
+  add_host:
+    name: rhel-1
+    groups: rhel
+  #when: fortianalyzer is defined
+
+- name: Get vSphere node
+  set_fact:
+    vsphere: "{{ item }}"
+  loop: "{{ groups['all'] }}"
+  when: item | regex_search("^VMware vCenter Server_(.*)$") 
+
+- name: Add vSphere node to the vsphere group
+  add_host:
+    name: "{{ vsphere }}"
+    groups: vsphere
+  when: vsphere is defined

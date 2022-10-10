@@ -1,0 +1,19 @@
+---
+
+- name: Get dynamic Fortinet nodes and assign them to groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - utils_dynamic_hosts
+
+
+- name: VMware undeployment roles
+  hosts: vsphere
+  connection: local
+  gather_facts: no
+  vars_files: 
+    - main.yml
+    - "{{infra}}.yml"
+  roles:
+    - vmware_undeploy_all

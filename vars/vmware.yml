@@ -1,0 +1,14 @@
+fortigate: fortigate-1
+fortianalyzer: fortianalyzer-1
+fortimanager: fortimanager-1
+domain: "root"
+
+fortigate_name: "FortiGate-VM64"
+fortianalyzer_name: "FAZVM64"
+fortimanager_name: "FortiManager-VM64"
+
+controller_host: 172.16.1.34:443
+controller_username: admin
+fortinet_username: admin
+fortinet_password: admin
+

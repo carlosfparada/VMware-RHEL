@@ -1,0 +1,10 @@
+domain: "root"
+
+fortigate: fortigate-1
+fortianalyzer: fortianalyzer-1
+fortimanager: fortimanager-1
+
+fortigate_name: "FortiGate-VM64"
+fortianalyzer_name: "FAZVM64"
+fortimanager_name: "FortiManager-VM64"
+
