@@ -12,7 +12,7 @@ vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 
 # fortimanager
 vm_name: rhel-1
-vm_template: rhel
+vm_template: rhl7
 vm_cluster: cluster1
 vm_datastore: datastore2
 vm_folder: vm
