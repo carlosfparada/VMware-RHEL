@@ -84,7 +84,7 @@
     interfaces:
     - adapter:
         ipv4:
-          type: STATIC
+          type: STATIC # DHCP
           gateways:
           - 192.168.1.1
           ip_address: "{{ vm_ip }}"
