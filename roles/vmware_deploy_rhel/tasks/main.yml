@@ -81,7 +81,7 @@
     #vm: "{{ lookup('vmware.vmware_rest.vm_moid', 'DC1/vm/rhel-1') }}"
     configuration_spec:
       linux_config:
-        domain: "my-lab.local"
+        domain: "local"
         hostname:
           fixed_name: "{{ vm_name }}"
           type: FIXED
