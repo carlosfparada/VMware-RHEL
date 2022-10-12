@@ -77,7 +77,8 @@
 
 - name: Customize the VM
   vmware.vmware_rest.vcenter_vm_guest_customization:
-    vm: "{{ vm_info_new.value[0].vm }}"
+    #vm: "{{ vm_info_new.value[0].vm }}"
+    vm: "{{ ansible_vmware_guest_path }}/{{ vm_name }}"
     configuration_spec:
       linux_config:
         domain: "my-lab.local"
