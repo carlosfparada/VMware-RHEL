@@ -79,12 +79,12 @@
   vmware.vmware_rest.vcenter_vm_guest_customization:
     vm: "{{ vm_info_new.value[0].vm }}"
     #vm: "{{ lookup('vmware.vmware_rest.vm_moid', 'DC1/vm/rhel-1') }}"
-    # configuration_spec:
-    #   linux_config:
-    #     domain: "local"
-    #     hostname:
-    #       fixed_name: "{{ vm_name }}"
-    #       type: FIXED
+    configuration_spec:
+      linux_config:
+        domain: "local"
+        hostname:
+          fixed_name: "{{ vm_name }}"
+          type: FIXED
     interfaces:
     - adapter:
         ipv4:
