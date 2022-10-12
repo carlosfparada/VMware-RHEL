@@ -16,4 +16,4 @@
     - main.yml
     - "{{infra}}.yml"
   roles:
-    - vmware_undeploy_all
+    - vmware_undeploy_rhel
