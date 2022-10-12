@@ -5,15 +5,15 @@
 
 - name: Get RHEL node
   set_fact:
-    fortianalyzer: "{{ item }}"
+    rhel: "{{ item }}"
   loop: "{{ groups['all'] }}"
-  when: item | regex_search("^rhel-1_(.*)$") 
+  when: item | regex_search("^rhel-1_(.*)$")
 
 - name: Add RHEL node to the rhel group
   add_host:
-    name: rhel-1
+    name: "{{ rhel }}"
     groups: rhel
-  #when: fortianalyzer is defined
+  when: rhel is defined
 
 - name: Get vSphere node
   set_fact:

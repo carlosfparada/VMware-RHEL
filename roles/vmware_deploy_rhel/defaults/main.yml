@@ -10,12 +10,13 @@ vcenter_hostname: "{{ lookup('env','VMWARE_HOST') }}"
 vcenter_username: "{{ lookup('env','VMWARE_USER') }}"
 vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 
-# fortimanager
+# rhel
 vm_name: rhel-1
 vm_template: rhl7
 vm_cluster: cluster1
 vm_datastore: datastore2
 vm_folder: vm
-vm_cpu: 2
-vm_ram: 8
+vm_cpu: 1
+vm_ram: 4
 
+vm_ip: 192.168.1.41
