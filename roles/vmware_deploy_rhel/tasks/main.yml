@@ -88,11 +88,12 @@
     interfaces:
     - adapter:
         ipv4:
-          type: STATIC # DHCP
-          gateways:
-          - 192.168.1.1
-          ip_address: "{{ vm_ip }}"
-          prefix: 24
+          type: DHCP
+          # type: STATIC # DHCP
+          # gateways:
+          # - 192.168.1.1
+          # ip_address: "{{ vm_ip }}"
+          # prefix: 24
     global_DNS_settings:
       dns_suffix_list: []
       dns_servers:
