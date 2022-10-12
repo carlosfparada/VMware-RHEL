@@ -72,27 +72,27 @@
   register: vm_info_new
   delegate_to: localhost
 
-- name: Customize the VM
-  vmware.vmware_rest.vcenter_vm_guest_customization:
-    vm: "{{ vm_info_new.value[0].vm }}"
-    configuration_spec:
-      linux_config:
-        domain: "my-lab.local"
-        hostname:
-          fixed_name: "{{ vm_name }}"
-          type: FIXED
-    interfaces:
-    - adapter:
-        ipv4:
-          type: STATIC # DHCP
-          gateways:
-          - 192.168.1.1
-          ip_address: "{{ vm_ip }}"
-          prefix: 24
-    global_DNS_settings:
-      dns_suffix_list: []
-      dns_servers:
-      - 192.168.1.31
+# - name: Customize the VM
+#   vmware.vmware_rest.vcenter_vm_guest_customization:
+#     vm: "{{ vm_info_new.value[0].vm }}"
+#     configuration_spec:
+#       linux_config:
+#         domain: "my-lab.local"
+#         hostname:
+#           fixed_name: "{{ vm_name }}"
+#           type: FIXED
+#     interfaces:
+#     - adapter:
+#         ipv4:
+#           type: STATIC # DHCP
+#           gateways:
+#           - 192.168.1.1
+#           ip_address: "{{ vm_ip }}"
+#           prefix: 24
+#     global_DNS_settings:
+#       dns_suffix_list: []
+#       dns_servers:
+#       - 192.168.1.31
 
 - name: Start the VM
   vmware.vmware_rest.vcenter_vm_power:
