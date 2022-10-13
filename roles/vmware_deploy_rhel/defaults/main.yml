@@ -12,7 +12,7 @@ vcenter_username: "{{ lookup('env','VMWARE_USER') }}"
 vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 
 # rhel
-vm_name: rhel1
+vm_name: rhel-1
 vm_template: rhl7
 vm_cluster: cluster1
 vm_datastore: datastore2
