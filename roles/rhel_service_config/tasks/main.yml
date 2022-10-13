@@ -1,0 +1,37 @@
+---
+  
+- name: disable firewalld
+  service: 
+    name: firewalld
+    enabled: no
+    state: stopped
+  become: true
+  ignore_errors: yes
+
+- name: Install apache webserver and PHP
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - httpd 
+      - php 
+      - php-common
+  become: yes
+  notify: restart httpd server
+
+- name: Restart httpd server 
+  service: 
+    name: httpd
+    enabled: yes
+    state: restarted
+  become: yes
+
+- name: Webpage template
+  template:
+    src: ../templates/webpage.html.j2
+    dest: /var/www/html/index.html
+    owner: apache
+    mode: "0644"
+  become: yes
+  notify: restart httpd server
+    
