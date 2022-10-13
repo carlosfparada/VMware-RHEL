@@ -97,6 +97,7 @@
       dns_suffix_list: []
       dns_servers:
       - 192.168.1.31
+  delegate_to: localhost
   become: yes
 
 
