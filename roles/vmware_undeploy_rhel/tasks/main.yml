@@ -5,18 +5,15 @@
     filter_names:
     - "{{ rhel_vm }}"
   register: vms_info
-  delegate_to: localhost
 
 - name: undeploy | stop the VM
   vmware.vmware_rest.vcenter_vm_power:
     state: stop
     vm: "{{ item.vm }}"
   with_items: '{{ vms_info.value }}'
-  delegate_to: localhost
 
 - name: undeploy | undeploy the VM
   vmware.vmware_rest.vcenter_vm:
     state: absent
     vm: "{{ item.vm }}"
   with_items: '{{ vms_info.value }}'
-  delegate_to: localhost

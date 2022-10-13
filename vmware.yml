@@ -8,7 +8,7 @@
     - utils_dynamic_hosts
 
 - name: VMware deployment roles
-  hosts: vsphere
+  hosts: localhost
   connection: local
   gather_facts: no
   vars_files: 

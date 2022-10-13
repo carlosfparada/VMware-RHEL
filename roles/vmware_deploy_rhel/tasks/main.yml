@@ -5,34 +5,29 @@
     filter_names:
     - "{{ vm_template }}"
   register: vm_info
-  delegate_to: localhost
 
 - name: Get cluster info
   vmware.vmware_rest.vcenter_cluster_info:
     filter_names:
     - "{{ vm_cluster }}"
   register: cluster_info
-  delegate_to: localhost
 
 - name: Get Resource info for {{ vm_cluster }}
   vmware.vmware_rest.vcenter_cluster_info:
     cluster: "{{ cluster_info.value[0].cluster }}"
   register: resource_pool_info
-  delegate_to: localhost
 
 - name: Get datastore info
   vmware.vmware_rest.vcenter_datastore_info:
     filter_names:
     - "{{ vm_datastore }}"
   register: datastore_info
-  delegate_to: localhost
 
 - name: Get folder info
   vmware.vmware_rest.vcenter_folder_info:
     filter_names:
     - '{{ vm_folder }}'
   register: folder_info
-  delegate_to: localhost
 
 - name: Set facts
   set_fact:
@@ -58,22 +53,16 @@
     source: "{{ source_vm_id }}"
     state: clone
     power_on: no
-  delegate_to: localhost
 
 - name: Sleep for 20 seconds and continue with play
   wait_for:
     timeout: 20
-  delegate_to: localhost
 
 - name: Get VM instance details
   vmware.vmware_rest.vcenter_vm_info:
     filter_names:
     - "{{ vm_name }}"
   register: vm_info_new
-  delegate_to: localhost
-
-- debug:
-    var: vm_info_new.value[0]
 
 - name: Customize the VM
   vmware.vmware_rest.vcenter_vm_guest_customization:
@@ -97,20 +86,15 @@
       dns_suffix_list: []
       dns_servers:
       - 192.168.1.31
-  delegate_to: localhost
-  #become: yes
-
 
 - name: Start the VM
   vmware.vmware_rest.vcenter_vm_power:
     state: start
     vm: "{{ vm_info_new.value[0].vm }}"
-  delegate_to: localhost
 
 - name: Sleep for 30 seconds and continue with play
   wait_for:
     timeout: 30
-  delegate_to: localhost
 
 # - name: Wait until SSH port is UP
 #   wait_for:
