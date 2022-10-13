@@ -97,6 +97,8 @@
       dns_suffix_list: []
       dns_servers:
       - 192.168.1.31
+  become: yes
+
 
 - name: Start the VM
   vmware.vmware_rest.vcenter_vm_power:
