@@ -2,7 +2,8 @@
 
 # all
 ansible_vmware_validate_certs: no
-ansible_connection: vmware_tools
+ansible_connection: ssh
+#ansible_connection: vmware_tools
 ansible_vmware_guest_path: "DC1/vm/"
 ansible_vmware_tools_user: admin
 ansible_vmware_tools_password: admin
