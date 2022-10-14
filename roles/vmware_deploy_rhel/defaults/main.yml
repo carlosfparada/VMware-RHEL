@@ -11,7 +11,7 @@ vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 
 # rhel
 vm_name: rhel-1
-vm_template: rhl7
+vm_template: template_rhel8 #rhl7
 vm_cluster: cluster1
 vm_datastore: datastore2
 vm_folder: vm
