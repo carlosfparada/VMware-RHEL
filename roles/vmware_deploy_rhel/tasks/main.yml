@@ -77,6 +77,7 @@
     interfaces:
     - adapter:
         ipv4:
+          type: STATIC
           type: DHCP
           gateways:
           - 192.168.1.1
