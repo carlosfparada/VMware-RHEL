@@ -14,7 +14,8 @@
 - name: Start firewalld
   service: 
     name: firewalld
-    state: started
+      enabled: yes
+      state: started
   become: true
   ignore_errors: yes
 
@@ -31,7 +32,6 @@
     owner: apache
     mode: "0644"
   become: yes
-  notify: restart httpd server
     
 - name: Restart httpd server 
   service: 
