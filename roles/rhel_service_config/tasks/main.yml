@@ -4,9 +4,14 @@
   service: 
     name: firewalld
     enabled: no
-    state: stopped
+    state: started
   become: true
   ignore_errors: yes
+
+- ansible.posix.firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
 
 - name: Install apache webserver and PHP
   yum:
@@ -16,14 +21,6 @@
       - httpd 
       - php 
       - php-common
-  become: yes
-  notify: restart httpd server
-
-- name: Restart httpd server 
-  service: 
-    name: httpd
-    enabled: yes
-    state: restarted
   become: yes
 
 - name: Webpage template
@@ -35,3 +32,11 @@
   become: yes
   notify: restart httpd server
     
+- name: Restart httpd server 
+  service: 
+    name: httpd
+    enabled: yes
+    state: restarted
+  become: yes
+
+  
