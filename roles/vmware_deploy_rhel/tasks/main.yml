@@ -43,7 +43,7 @@
       datastore: "{{ datastore_id }}"
       folder: "{{ folder_id }}"
     name: "{{ vm_name }}"
-    guest_OS: "RHEL_7_64"
+    guest_OS: "RHEL_8_64"
     cpu:
       hot_add_enabled: true
       count: "{{ vm_cpu }}"
@@ -77,12 +77,11 @@
     interfaces:
     - adapter:
         ipv4:
-          type: DHCP
-          # type: STATIC
-          # gateways:
-          # - 192.168.1.1
-          # ip_address: "{{ vm_ip }}"
-          # prefix: 24
+          type: STATIC
+          gateways:
+          - 192.168.1.1
+          ip_address: "{{ vm_ip }}"
+          prefix: 24
     global_DNS_settings:
       dns_suffix_list: []
       dns_servers:
