@@ -1,27 +1,28 @@
 ---
-  
-- name: disable firewalld
+
+- name: Install Software
+  dnf:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - firewalld
+      - httpd
+      - php 
+      - php-common
+  become: yes
+
+- name: Start firewalld
   service: 
     name: firewalld
-    enabled: no
     state: started
   become: true
   ignore_errors: yes
 
-- ansible.posix.firewalld:
+- name: Open port TCP 80
+  ansible.posix.firewalld:
     port: 80/tcp
     permanent: yes
     state: enabled
-
-- name: Install apache webserver and PHP
-  yum:
-    name: "{{ packages }}"
-  vars:
-    packages:
-      - httpd 
-      - php 
-      - php-common
-  become: yes
 
 - name: Webpage template
   template:
