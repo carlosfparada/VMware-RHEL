@@ -5,15 +5,18 @@
     filter_names:
     - "{{ rhel_vm }}"
   register: vms_info
+  ignore_errors: true
 
 - name: undeploy | stop the VM
   vmware.vmware_rest.vcenter_vm_power:
     state: stop
     vm: "{{ item.vm }}"
   with_items: '{{ vms_info.value }}'
+  ignore_errors: true
 
 - name: undeploy | undeploy the VM
   vmware.vmware_rest.vcenter_vm:
     state: absent
     vm: "{{ item.vm }}"
   with_items: '{{ vms_info.value }}'
+  ignore_errors: true
