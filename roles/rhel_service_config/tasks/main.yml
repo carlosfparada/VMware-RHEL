@@ -1,8 +1,9 @@
 ---
 
 - name: Install Software
-  dnf:
+  ansible.builtin.dnf:
     name: "{{ packages }}"
+    state: present
   vars:
     packages:
       - firewalld
@@ -12,21 +13,21 @@
   become: yes
 
 - name: Start firewalld
-  service:
+  ansible.builtin.service:
     name: firewalld
     enabled: yes
     state: started
   become: true
-  ignore_errors: yes
 
 - name: Open port TCP 80
   ansible.posix.firewalld:
     port: 80/tcp
     permanent: yes
     state: enabled
+  become: true
 
 - name: Webpage template
-  template:
+  ansible.builtin.template:
     src: ../templates/webpage.html.j2
     dest: /var/www/html/index.html
     owner: apache
@@ -34,7 +35,7 @@
   become: yes
     
 - name: Restart httpd server 
-  service: 
+  ansible.builtin.service: 
     name: httpd
     enabled: yes
     state: restarted
