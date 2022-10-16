@@ -12,10 +12,10 @@
   become: yes
 
 - name: Start firewalld
-  service: 
+  service:
     name: firewalld
-      enabled: yes
-      state: started
+    enabled: yes
+    state: started
   become: true
   ignore_errors: yes
 
