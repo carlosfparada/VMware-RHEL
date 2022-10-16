@@ -1,23 +1,23 @@
 ---
 
-- name: Same as above but subscribe to a specific pool by ID.
-  community.general.redhat_subscription:
-    state: present
-    username: rh-ee-cparada
-    password: 
-    pool_ids: 8a85f99c7d76f2fd017d96c9d5ed06b1
+# - name: Same as above but subscribe to a specific pool by ID.
+#   community.general.redhat_subscription:
+#     state: present
+#     username: rh-ee-cparada
+#     password: 
+#     pool_ids: 8a85f99c7d76f2fd017d96c9d5ed06b1
 
-- name: Install Software
-  ansible.builtin.dnf:
-    name: "{{ packages }}"
-    state: present
-  vars:
-    packages:
-      - firewalld
-      - httpd
-      - php 
-      - php-common
-  become: yes
+# - name: Install Software
+#   ansible.builtin.dnf:
+#     name: "{{ packages }}"
+#     state: present
+#   vars:
+#     packages:
+#       - firewalld
+#       - httpd
+#       - php 
+#       - php-common
+#   become: yes
 
 - name: Start firewalld
   ansible.builtin.service:
