@@ -1,7 +1,14 @@
 ---
 
+- name: Same as above but subscribe to a specific pool by ID.
+  community.general.redhat_subscription:
+    state: present
+    username: rh-ee-cparada
+    password: 
+    pool_ids: 0123456789abcdef0123456789abcdef
+
 - name: Install Software
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "{{ packages }}"
     state: present
   vars:
