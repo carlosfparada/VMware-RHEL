@@ -4,7 +4,7 @@
   community.general.redhat_subscription:
     state: present
     username: rh-ee-cparada
-    password: Xpass1111055%&
+    password: 
     pool_ids: 8a85f99c7d76f2fd017d96c9d5ed06b1
 
 - name: Install Software
