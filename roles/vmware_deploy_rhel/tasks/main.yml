@@ -98,7 +98,7 @@
 #     timeout: 60
 
 - name: Wait until SSH port is UP
-  wait_for:
+  ansible.builtin.wait_for:
     port: 22
     host: "{{ vm_ip }}"
     search_regex: OpenSSH
