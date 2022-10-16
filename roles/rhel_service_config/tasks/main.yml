@@ -5,7 +5,7 @@
 #     state: present
 #     username: rh-ee-cparada
 #     password: 
-#     pool_ids: 8a85f99c7d76f2fd017d96c9d5ed06b1
+#     pool_ids: 
 
 - name: Install Software
   ansible.builtin.dnf:
