@@ -1,4 +1,5 @@
 ---
+
 - name: Same as above but subscribe to a specific pool by ID.
   community.general.redhat_subscription:
     state: present
