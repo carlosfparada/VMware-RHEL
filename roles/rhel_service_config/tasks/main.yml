@@ -22,18 +22,18 @@
       - php-common
   become: yes
 
+- name: Open port TCP 80
+  ansible.posix.firewalld:
+    port: http/tcp
+    permanent: yes
+    state: enabled
+  become: true
+
 - name: Start firewalld
   ansible.builtin.service:
     name: firewalld
     enabled: yes
     state: started
-  become: true
-
-- name: Open port TCP 80
-  ansible.posix.firewalld:
-    port: 80/tcp
-    permanent: yes
-    state: enabled
   become: true
 
 - name: Webpage template
