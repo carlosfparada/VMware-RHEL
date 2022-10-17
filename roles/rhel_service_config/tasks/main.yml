@@ -29,13 +29,6 @@
     state: enabled
   become: true
 
-- name: Start firewalld
-  ansible.builtin.service:
-    name: firewalld
-    enabled: yes
-    state: restarted
-  become: true
-
 - name: Webpage template
   ansible.builtin.template:
     src: ../templates/webpage.html.j2
@@ -43,7 +36,14 @@
     owner: apache
     mode: "0644"
   become: yes
-    
+
+- name: Start firewalld
+  ansible.builtin.service:
+    name: firewalld
+    enabled: yes
+    state: restarted
+  become: true
+
 - name: Restart httpd server 
   ansible.builtin.service: 
     name: httpd
