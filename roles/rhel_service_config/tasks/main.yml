@@ -33,7 +33,7 @@
   ansible.builtin.service:
     name: firewalld
     enabled: yes
-    state: started
+    state: restarted
   become: true
 
 - name: Webpage template
