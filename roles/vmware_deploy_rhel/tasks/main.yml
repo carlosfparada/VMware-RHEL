@@ -97,7 +97,7 @@
   ansible.builtin.wait_for:
     port: 22
     host: "{{ vm_ip }}"
-    search_regex: OpenSSH
+    #search_regex: OpenSSH
     delay: 20
   vars:
     ansible_connection: local
