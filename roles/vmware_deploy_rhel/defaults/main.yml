@@ -14,7 +14,7 @@ vm_name: rhel-1
 vm_template: rhel8-ova
 vm_cluster: Cluster-1
 vm_datastore: WorkloadDatastore
-vm_folder: vm
+vm_folder: sandbox-54lm7
 vm_cpu: 1
 vm_ram: 4
 
