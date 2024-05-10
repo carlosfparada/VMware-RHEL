@@ -1,3 +1,3 @@
-# SNow-VMware-RHEL
+# VMware-RHEL
 
 manage rhel deployment
