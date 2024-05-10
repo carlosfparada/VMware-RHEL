@@ -13,7 +13,7 @@ vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 vm_name: rhel-1
 vm_template: rhel8-ova
 vm_cluster: Cluster-1
-vm_datastore: datastore2
+vm_datastore: WorkloadDatastore
 vm_folder: vm
 vm_cpu: 1
 vm_ram: 4
