@@ -11,10 +11,10 @@ vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 
 # rhel
 vm_name: rhel-1
-vm_template: rhel86-tpl
+vm_template: rhcos-4.11.9
 vm_cluster: Cluster-1
 vm_datastore: WorkloadDatastore
-vm_folder: rhcos-4.11.9
+vm_folder: sandbox-54lm7  # needs to be changed for every deployment
 vm_cpu: 1
 vm_ram: 4
 
