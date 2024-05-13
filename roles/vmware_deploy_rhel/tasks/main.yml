@@ -52,46 +52,47 @@
       size_MiB: "{{ vm_ram }}"
     source: "{{ source_vm_id }}"
     state: clone
-    power_on: no
+    #power_on: no
+    power_on: yes
 
-- name: Sleep for 20 seconds and continue with play
-  wait_for:
-    timeout: 20
+# - name: Sleep for 20 seconds and continue with play
+#   wait_for:
+#     timeout: 20
 
-- name: Get VM instance details
-  vmware.vmware_rest.vcenter_vm_info:
-    filter_names:
-    - "{{ vm_name }}"
-  register: vm_info_new
+# - name: Get VM instance details
+#   vmware.vmware_rest.vcenter_vm_info:
+#     filter_names:
+#     - "{{ vm_name }}"
+#   register: vm_info_new
 
-- name: Customize the VM
-  vmware.vmware_rest.vcenter_vm_guest_customization:
-    vm: "{{ vm_info_new.value[0].vm }}"
-    #vm: "{{ lookup('vmware.vmware_rest.vm_moid', 'DC1/vm/rhel-1') }}"
-    configuration_spec:
-      linux_config:
-        domain: "local"
-        hostname:
-          fixed_name: "{{ vm_name }}"
-          type: FIXED
-    interfaces:
-    - adapter:
-        ipv4:
-          type: STATIC
-          gateways:
-          - 192.168.1.1
-          ip_address: "{{ vm_ip }}"
-          prefix: 24
-    global_DNS_settings:
-      dns_suffix_list: []
-      dns_servers:
-      - 192.168.1.31
-  become: true
+# - name: Customize the VM
+#   vmware.vmware_rest.vcenter_vm_guest_customization:
+#     vm: "{{ vm_info_new.value[0].vm }}"
+#     #vm: "{{ lookup('vmware.vmware_rest.vm_moid', 'DC1/vm/rhel-1') }}"
+#     configuration_spec:
+#       linux_config:
+#         domain: "local"
+#         hostname:
+#           fixed_name: "{{ vm_name }}"
+#           type: FIXED
+#     interfaces:
+#     - adapter:
+#         ipv4:
+#           type: STATIC
+#           gateways:
+#           - 192.168.1.1
+#           ip_address: "{{ vm_ip }}"
+#           prefix: 24
+#     global_DNS_settings:
+#       dns_suffix_list: []
+#       dns_servers:
+#       - 192.168.1.31
+#   become: true
 
-- name: Start the VM
-  vmware.vmware_rest.vcenter_vm_power:
-    state: start
-    vm: "{{ vm_info_new.value[0].vm }}"
+# - name: Start the VM
+#   vmware.vmware_rest.vcenter_vm_power:
+#     state: start
+#     vm: "{{ vm_info_new.value[0].vm }}"
 
 - name: Wait until SSH port is UP
   ansible.builtin.wait_for:
