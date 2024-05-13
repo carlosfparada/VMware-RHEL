@@ -11,7 +11,7 @@ vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 
 # rhel
 vm_name: rhel-1
-vm_template: rhel8-ova
+vm_template: rhel86-tpl
 vm_cluster: Cluster-1
 vm_datastore: WorkloadDatastore
 vm_folder: sandbox-54lm7
