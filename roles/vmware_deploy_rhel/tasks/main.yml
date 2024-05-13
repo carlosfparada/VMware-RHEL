@@ -52,19 +52,19 @@
       size_MiB: "{{ vm_ram }}"
     source: "{{ source_vm_id }}"
     state: clone
-    #power_on: no
     power_on: yes
+    # power_on: no
 
 # - name: Sleep for 20 seconds and continue with play
 #   wait_for:
 #     timeout: 20
-
+# 
 # - name: Get VM instance details
 #   vmware.vmware_rest.vcenter_vm_info:
 #     filter_names:
 #     - "{{ vm_name }}"
 #   register: vm_info_new
-
+# 
 # - name: Customize the VM
 #   vmware.vmware_rest.vcenter_vm_guest_customization:
 #     vm: "{{ vm_info_new.value[0].vm }}"
@@ -88,7 +88,7 @@
 #       dns_servers:
 #       - 192.168.1.31
 #   become: true
-
+# 
 # - name: Start the VM
 #   vmware.vmware_rest.vcenter_vm_power:
 #     state: start
