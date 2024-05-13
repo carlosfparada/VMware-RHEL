@@ -14,7 +14,7 @@ vm_name: rhel-1
 vm_template: rhel86-tpl
 vm_cluster: Cluster-1
 vm_datastore: WorkloadDatastore
-vm_folder: sandbox-54lm7
+vm_folder: rhcos-4.11.9
 vm_cpu: 1
 vm_ram: 4
 
