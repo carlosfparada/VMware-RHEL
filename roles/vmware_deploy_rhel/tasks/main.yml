@@ -8,12 +8,11 @@
 
 - name: List Local Content Library
   vmware.vmware_rest.content_locallibrary_info:
-#    library_id: "RHEL Templates"
-  register: my_content_library
+  register: content_library_info
 
 - name: Use the name to identify the item
   set_fact:
-    my_template_id: "{{ item.id }}"
+    template_id: "{{ item.id }}"
   loop: "{{ my_content_library.value }}"
   when: item.name == "RHEL Templates"
 
