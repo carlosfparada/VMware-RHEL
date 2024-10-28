@@ -1,4 +1,2 @@
----
-
 collections:
   - community.vmware.vmware_guest
