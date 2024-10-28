@@ -6,15 +6,15 @@
 #     #vcenter_validate_certs: false
 #   register: template_info
 
-# - name: List Local Content Library
-#   vmware.vmware_rest.content_locallibrary_info:
-#     library_id: "RHEL Templates"
-#   register: my_content_library
-
 - name: List Local Content Library
-  vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
-    template_library_item: "RHEL Templates"
+  vmware.vmware_rest.content_locallibrary_info:
+    library_id: "RHEL Templates"
   register: my_content_library
+
+# - name: List Local Content Library
+#   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
+#     template_library_item: "RHEL Templates"
+#   register: my_content_library
 
 - name: Get cluster info
   vmware.vmware_rest.vcenter_cluster_info:
