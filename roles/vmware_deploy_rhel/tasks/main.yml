@@ -8,7 +8,7 @@
 
 - name: List Local Content Library
   vmware.vmware_rest.content_locallibrary_info:
-    library_id: "RHEL Templates"
+#    library_id: "RHEL Templates"
   register: my_content_library
 
 # - name: List Local Content Library
