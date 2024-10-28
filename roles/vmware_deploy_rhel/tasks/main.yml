@@ -10,14 +10,19 @@
   vmware.vmware_rest.content_locallibrary_info:
   register: content_library_info
 
-- name: Get Template Library 
+- name: Get Template Library "RHEL Templates"
   set_fact:
     template_lib: "{{ item }}"
     template_id: "{{ item.id }}"
   loop: "{{ content_library_info.value }}"
   when: item.name == "RHEL Templates"
 
-- name: Get cluster info
+- name: Get template Id for {{ vm_template }}
+  vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
+    template_library_item: "{{ vm_template }}"
+  register: template_info
+
+- name: Get cluster info for {{ vm_cluster }}
   vmware.vmware_rest.vcenter_cluster_info:
     filter_names:
     - "{{ vm_cluster }}"
@@ -28,19 +33,19 @@
     cluster: "{{ cluster_info.value[0].cluster }}"
   register: resource_pool_info
 
-- name: Get datastore info
+- name: Get datastore info for {{ vm_datastore }}
   vmware.vmware_rest.vcenter_datastore_info:
     filter_names:
     - "{{ vm_datastore }}"
   register: datastore_info
 
-- name: Get folder info
+- name: Get folder info for {{ vm_folder }}
   vmware.vmware_rest.vcenter_folder_info:
     filter_names:
     - '{{ vm_folder }}'
   register: folder_info
 
-- name: Deploy a new VM based on the template
+- name: Deploy a new VM {{ vm_name }} based on template 
   vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
     name: "{{ vm_name }}"
     #library: "{{ template_lib }}"
