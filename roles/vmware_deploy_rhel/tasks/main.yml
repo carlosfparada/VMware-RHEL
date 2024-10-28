@@ -10,8 +10,9 @@
   vmware.vmware_rest.content_locallibrary_info:
   register: content_library_info
 
-- name: Get Template Id
+- name: Get Template Library 
   set_fact:
+    template_lib: "{{ item }}"
     template_id: "{{ item.id }}"
   loop: "{{ content_library_info.value }}"
   when: item.name == "RHEL Templates"
@@ -47,7 +48,7 @@
 - name: Deploy a new VM based on the template
   vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
     name: "{{ vm_name }}"
-    library: '{{ content_library_info.id }}'
+    library: '{{ template_lib }}'
     template_library_item: '{{ template_id }}'
     placement:
       cluster: "{{ cluster_info.value[0].cluster }}"
