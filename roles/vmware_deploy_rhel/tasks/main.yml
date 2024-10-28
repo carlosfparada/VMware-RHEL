@@ -12,7 +12,7 @@
 
 - name: Get Template Library ID for "RHEL Templates"
   set_fact:
-    template_library: "{{ item.id }}"
+    template_library: "{{ item }}"
   loop: "{{ content_library_info.value }}"
   when: item.name == "RHEL Templates"
 
