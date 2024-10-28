@@ -11,7 +11,7 @@ vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 
 # rhel
 vm_name: rhel-1
-vm_template: RHEL/rhel94-tpl
+vm_template: rhel94-tpl
 vm_cluster: Cluster-1
 vm_datastore: workload_share_dwPsq
 vm_folder: sandbox-b8jvq  # needs to be changed for every deployment

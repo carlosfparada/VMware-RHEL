@@ -1,9 +1,10 @@
 ---
 
 - name: Get template 
-  vmware.vmware_rest.template_library_item:
-    template_library_item: "{{ vm_template }}"
-  register: template_info
+  vmware.vmware_rest.vcenter_vm_info:
+    filter_names:
+    - "{{ vm_template }}"
+  register: vm_info
 
 - name: Get cluster info
   vmware.vmware_rest.vcenter_cluster_info:
@@ -30,7 +31,7 @@
 
 - name: Set facts
   set_fact:
-    source_vm_id: "{{ template_info.value[0].vm }}"
+    source_vm_id: "{{ vm_info.value[0].vm }}"
     cluster_id: '{{ cluster_info.value[0].cluster }}'
     datastore_id: '{{ datastore_info.value[0].datastore }}'
     folder_id: '{{ folder_info.value[0].folder }}'
@@ -49,8 +50,7 @@
     memory:
       hot_add_enabled: true
       size_MiB: "{{ vm_ram }}"
-    #source: "{{ source_vm_id }}"
-    template: "{{ vm_template }}"
+    source: "{{ source_vm_id }}"
     state: clone
     power_on: yes
     # power_on: no
