@@ -12,10 +12,11 @@ vcenter_password: "{{ lookup('env','VMWARE_PASSWORD') }}"
 # rhel
 vm_name: rhel-1
 vm_template: rhel94-tpl-l
+vm_datacenter: "SDDC-Datacenter"
 vm_cluster: Cluster-1
 vm_datastore: workload_share_dwPsq
 #vm_folder: sandbox-b8jvq  # needs to be changed for every deployment
-vm_folder: Cluster-1/sandbox-b8jvq  # needs to be changed for every deployment
+#vm_folder: Cluster-1/sandbox-b8jvq  # needs to be changed for every deployment
 vm_cpu: 1
 vm_ram: 4
 

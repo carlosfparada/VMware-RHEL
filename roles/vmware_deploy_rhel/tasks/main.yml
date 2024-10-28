@@ -74,7 +74,7 @@
   community.vmware.vmware_guest:
     name: "{{ vm_name }}"
     template: "{{ vm_template }}"
-    datacenter: "SDDC-Datacenter"
+    datacenter: "{{ vm_datacenter }}"
     cluster: "{{ cluster_info.value[0].cluster }}"
     datastore: "{{ datastore_info.value[0].datastore }}"
     folder: "{{ folder_info.value[0].folder }}"
