@@ -6,14 +6,14 @@
 #     #vcenter_validate_certs: false
 #   register: template_info
 
-- name: List Local Content Library
+- name: Get Local Content Library
   vmware.vmware_rest.content_locallibrary_info:
   register: content_library_info
 
-- name: Use the name to identify the item
+- name: Get Template Id
   set_fact:
     template_id: "{{ item.id }}"
-  loop: "{{ my_content_library.value }}"
+  loop: "{{ content_library_info.value }}"
   when: item.name == "RHEL Templates"
 
 # - name: List Local Content Library
@@ -46,7 +46,7 @@
 
 - name: Set facts
   set_fact:
-    template_id: "{{ my_template_id }}"
+    template_id: "{{ template_id }}"
     cluster_id: '{{ cluster_info.value[0].cluster }}'
     datastore_id: '{{ datastore_info.value[0].datastore }}'
     folder_id: '{{ folder_info.value[0].folder }}'
