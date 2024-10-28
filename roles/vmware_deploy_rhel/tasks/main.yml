@@ -63,7 +63,7 @@
         size_MiB: "{{ vm_ram }}"
       #nics:
     state: deploy
-    power_on: yes
+    powered_on: yes
   register: vm_info
 
 
