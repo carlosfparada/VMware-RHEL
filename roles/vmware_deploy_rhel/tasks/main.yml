@@ -2,7 +2,7 @@
 
 - name: Get template 
   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
-    template_library_item: RHEL #"{{ vm_template }}"
+    #template_library_item: RHEL #"{{ vm_template }}"
     vcenter_validate_certs: false
   register: template_info
 
