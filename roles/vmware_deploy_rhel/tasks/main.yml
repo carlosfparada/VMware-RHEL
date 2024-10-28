@@ -1,10 +1,10 @@
 ---
 
-- name: Get template 
-  vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
-    #template_library_item: RHEL #"{{ vm_template }}"
-    #vcenter_validate_certs: false
-  register: template_info
+# - name: Get template 
+#   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
+#     #template_library_item: RHEL #"{{ vm_template }}"
+#     #vcenter_validate_certs: false
+#   register: template_info
 
 - name: Get cluster info
   vmware.vmware_rest.vcenter_cluster_info:
@@ -31,7 +31,7 @@
 
 - name: Set facts
   set_fact:
-    source_vm_id: "{{ template_info.value[0].vm }}"
+    #source_vm_id: "{{ template_info.value[0].vm }}"
     cluster_id: '{{ cluster_info.value[0].cluster }}'
     datastore_id: '{{ datastore_info.value[0].datastore }}'
     folder_id: '{{ folder_info.value[0].folder }}'
