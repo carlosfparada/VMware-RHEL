@@ -48,26 +48,36 @@
     - '{{ vm_folder }}'
   register: folder_info
 
-- name: Deploy a new VM {{ vm_name }} based on template 
-  vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
+# - name: Deploy a new VM {{ vm_name }} based on template 
+#   vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
+#     name: "{{ vm_name }}"
+#     #library: "{{ template_lib }}"
+#     template_library_item: '{{ template_item.id }}'
+#     placement:
+#       cluster: "{{ cluster_info.value[0].cluster }}"
+#       datastore: "{{ datastore_info.value[0].datastore }}"
+#       folder: "{{ folder_info.value[0].folder }}"
+#     # hardware_customization:
+#     #   cpu_update:
+#     #     hot_add_enabled: true
+#     #     count: "{{ vm_cpu }}"
+#     #   memory_update:
+#     #     hot_add_enabled: true
+#     #     size_MiB: "{{ vm_ram }}"
+#       #nics:
+#     state: deploy
+#     #powered_on: yes
+#   register: vm_info
+
+
+- name: Create a VM from a template
+  community.vmware.vmware_guest:
     name: "{{ vm_name }}"
-    #library: "{{ template_lib }}"
-    template_library_item: '{{ template_item.id }}'
-    placement:
-      cluster: "{{ cluster_info.value[0].cluster }}"
-      datastore: "{{ datastore_info.value[0].datastore }}"
-      folder: "{{ folder_info.value[0].folder }}"
-    # hardware_customization:
-    #   cpu_update:
-    #     hot_add_enabled: true
-    #     count: "{{ vm_cpu }}"
-    #   memory_update:
-    #     hot_add_enabled: true
-    #     size_MiB: "{{ vm_ram }}"
-      #nics:
-    state: deploy
-    #powered_on: yes
-  register: vm_info
+    template: "{{ vm_template }}"
+    cluster: "{{ cluster_info.value[0].cluster }}"
+    datastore: "{{ datastore_info.value[0].datastore }}"
+    folder: "{{ folder_info.value[0].folder }}"
+    state: poweredon
 
 
 # - name: Sleep for 20 seconds and continue with play
