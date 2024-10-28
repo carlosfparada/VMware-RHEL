@@ -74,7 +74,7 @@
   community.vmware.vmware_guest:
     name: "{{ vm_name }}"
     template: "{{ vm_template }}"
-    datacenter: "vcsnsx-vc.infra.demo.redhat.com"
+    datacenter: "SDDC-Datacenter"
     cluster: "{{ cluster_info.value[0].cluster }}"
     datastore: "{{ datastore_info.value[0].datastore }}"
     folder: "{{ folder_info.value[0].folder }}"
