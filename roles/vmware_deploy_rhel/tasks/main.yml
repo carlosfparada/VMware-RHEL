@@ -75,9 +75,9 @@
     name: "{{ vm_name }}"
     template: "{{ vm_template }}"
     datacenter: "{{ vm_datacenter }}"
-    cluster: "{{ cluster_info.value[0].cluster }}"
-    datastore: "{{ datastore_info.value[0].datastore }}"
-    folder: "{{ folder_info.value[0].folder }}"
+    cluster: "{{ vm_cluster }}"
+    datastore: "{{ vm_datastore }}"
+    folder: "{{ vm_folder }}"
     state: poweredon
 
 
