@@ -1,2 +1,3 @@
+---
 collections:
-  - community.vmware.vmware_guest
+  - community.vmware
