@@ -1,7 +1,7 @@
 ---
 
 - name: Get template 
-  vmware.vmware_rest.template_library_item:
+  vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
     template_library_item: "{{ vm_template }}"
   register: template_info
 
