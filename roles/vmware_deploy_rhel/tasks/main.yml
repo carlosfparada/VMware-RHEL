@@ -17,9 +17,12 @@
   when: item.name == "RHEL Templates"
   register: template_lib_items_info
 
+  debug:
+    var: template_lib_items_info
+
 - name: Get template for {{ vm_template }}
   set_fact:
-    template_item: "{{ template_lib_items_info | selectattr('name', 'equalto', vm_template) | first }}"
+    template_item: "{{ template_lib_items_info.value | selectattr('name', 'equalto', vm_template) | first }}"
 
 - name: Get cluster info for {{ vm_cluster }}
   vmware.vmware_rest.vcenter_cluster_info:
