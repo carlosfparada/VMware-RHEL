@@ -43,7 +43,7 @@
 - name: Deploy a new VM based on the template
   vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
     name: "{{ vm_name }}"
-    library: "{{ template_lib }}"
+    #library: "{{ template_lib }}"
     template_library_item: '{{ template_id }}'
     placement:
       cluster: "{{ cluster_info.value[0].cluster }}"
