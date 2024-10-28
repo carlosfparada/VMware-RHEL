@@ -47,13 +47,13 @@
       cluster: "{{ cluster_info.value[0].cluster }}"
       datastore: "{{ datastore_info.value[0].datastore }}"
       folder: "{{ folder_info.value[0].folder }}"
-    hardware_customization:
-      cpu_update:
-        hot_add_enabled: true
-        count: "{{ vm_cpu }}"
-      memory_update:
-        hot_add_enabled: true
-        size_MiB: "{{ vm_ram }}"
+    # hardware_customization:
+    #   cpu_update:
+    #     hot_add_enabled: true
+    #     count: "{{ vm_cpu }}"
+    #   memory_update:
+    #     hot_add_enabled: true
+    #     size_MiB: "{{ vm_ram }}"
       #nics:
     state: deploy
     powered_on: yes
