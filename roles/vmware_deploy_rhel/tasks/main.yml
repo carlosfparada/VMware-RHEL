@@ -44,22 +44,15 @@
     - '{{ vm_folder }}'
   register: folder_info
 
-- name: Set facts
-  set_fact:
-    template_id: "{{ template_id }}"
-    cluster_id: '{{ cluster_info.value[0].cluster }}'
-    datastore_id: '{{ datastore_info.value[0].datastore }}'
-    folder_id: '{{ folder_info.value[0].folder }}'
-
 - name: Deploy a new VM based on the template
   vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
     name: "{{ vm_name }}"
-    library: '{{ nfs_lib.id }}'
-    template_library_item: '{{ my_template_item.id }}'
+    library: '{{ content_library_info.id }}'
+    template_library_item: '{{ template_id }}'
     placement:
-      cluster: "{{ cluster_id }}"
-      datastore: "{{ datastore_id }}"
-      folder: "{{ folder_id }}"
+      cluster: "{{ cluster_info.value[0].cluster }}"
+      datastore: "{{ datastore_info.value[0].datastore }}"
+      folder: "{{ folder_info.value[0].folder }}"
     hardware_customization:
       cpu_update:
         hot_add_enabled: true
