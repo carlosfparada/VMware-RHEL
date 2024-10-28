@@ -6,6 +6,10 @@
 #     #vcenter_validate_certs: false
 #   register: template_info
 
+- name: List Local Content Library
+  vmware.vmware_rest.content_locallibrary_info:
+  register: my_content_library
+  
 - name: Get cluster info
   vmware.vmware_rest.vcenter_cluster_info:
     filter_names:
