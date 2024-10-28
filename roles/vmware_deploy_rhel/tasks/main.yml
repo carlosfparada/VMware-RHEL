@@ -17,7 +17,7 @@
   when: item.name == "RHEL Templates"
   register: template_lib_items_info
 
-  debug:
+- debug:
     var: template_lib_items_info
 
 - name: Get template for {{ vm_template }}
