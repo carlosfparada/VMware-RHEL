@@ -13,14 +13,14 @@
 
 - name: Use the name to identify the item
   set_fact:
-    my_template_item: "{{ item.id }}"
+    my_template_id: "{{ item.id }}"
   loop: "{{ my_content_library.value }}"
   when: item.name == "RHEL Templates"
 
-- name: List Local Content Library
-  vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
-    template_library_item: "{{ my_template_item }}"
-  register: my_content_library_item
+# - name: List Local Content Library
+#   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
+#     template_library_item: "{{ my_template_item }}"
+#   register: my_content_library_item
 
 - name: Get cluster info
   vmware.vmware_rest.vcenter_cluster_info:
@@ -47,7 +47,7 @@
 
 - name: Set facts
   set_fact:
-    #source_vm_id: "{{ template_info.value[0].vm }}"
+    template_id: "{{ my_template_id }}"
     cluster_id: '{{ cluster_info.value[0].cluster }}'
     datastore_id: '{{ datastore_info.value[0].datastore }}'
     folder_id: '{{ folder_info.value[0].folder }}'
@@ -66,8 +66,7 @@
     memory:
       hot_add_enabled: true
       size_MiB: "{{ vm_ram }}"
-    #source: "{{ source_vm_id }}"
-    source: "{{ vm_template }}"
+    source: "{{ template_id }}"
     state: clone
     power_on: yes
     # power_on: no
