@@ -26,9 +26,9 @@
 - name: Remove a VM
   community.vmware.vmware_guest:
     name: "{{ vm_name }}"
-    template: "{{ vm_template }}"
-    datacenter: "{{ vm_datacenter }}"
-    cluster: "{{ vm_cluster }}"
-    datastore: "{{ vm_datastore }}"
-    folder: "{{ vm_folder }}"
+    # template: "{{ vm_template }}"
+    # datacenter: "{{ vm_datacenter }}"
+    # cluster: "{{ vm_cluster }}"
+    # datastore: "{{ vm_datastore }}"
+    # folder: "{{ vm_folder }}"
     state: absent
