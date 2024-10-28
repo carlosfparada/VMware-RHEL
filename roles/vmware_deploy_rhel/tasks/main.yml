@@ -72,6 +72,16 @@
     cluster: "{{ vm_cluster }}"
     datastore: "{{ vm_datastore }}"
     folder: "{{ vm_folder }}"
+    # networks:
+    #   - name: VM Network
+    #     ip: 192.168.1.100
+    #     netmask: 255.255.255.0
+    #     gateway: 192.168.1.1
+    #     mac: aa:bb:dd:aa:00:14
+    #     domain: my_domain
+    #     dns_servers:
+    #     - 192.168.1.1
+    #     - 192.168.1.2
     state: poweredon
 
 
