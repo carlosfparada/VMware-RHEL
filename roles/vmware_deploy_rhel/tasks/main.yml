@@ -10,12 +10,6 @@
   vmware.vmware_rest.content_locallibrary_info:
   register: content_library_info
 
-# - name: Get Template Library ID for "RHEL Templates"
-#   set_fact:
-#     template_library: "{{ item }}"
-#   loop: "{{ content_library_info.value }}"
-#   when: item.name == "RHEL Templates"
-
 - name: Get template items for {{ vm_template }}
   vmware.vmware_rest.content_library_item_info:
     library_id: "{{ item.id  }}"
@@ -25,7 +19,7 @@
 
 - name: Get template for {{ vm_template }}
   set_fact:
-    template_item: "{{ template_lib_items_info.value | selectattr('name', 'equalto', vm_template) | first }}"
+    template_item: "{{ template_lib_items_info | selectattr('name', 'equalto', vm_template) | first }}"
 
 - name: Get cluster info for {{ vm_cluster }}
   vmware.vmware_rest.vcenter_cluster_info:
