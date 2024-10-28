@@ -77,7 +77,7 @@
     datacenter: "{{ vm_datacenter }}"
     cluster: "{{ vm_cluster }}"
     datastore: "{{ vm_datastore }}"
-    folder: "{{ vm_datacenter }}/{{ vm_folder }}"
+    folder: "Workloads/{{ vm_folder }}"
     state: poweredon
 
 
