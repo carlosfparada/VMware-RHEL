@@ -51,7 +51,7 @@
       hot_add_enabled: true
       size_MiB: "{{ vm_ram }}"
     #source: "{{ source_vm_id }}"
-    template: "{{ vm_template }}"
+    source: "{{ vm_template }}"
     state: clone
     power_on: yes
     # power_on: no
