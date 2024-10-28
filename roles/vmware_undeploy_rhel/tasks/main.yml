@@ -32,3 +32,4 @@
     # datastore: "{{ vm_datastore }}"
     # folder: "{{ vm_folder }}"
     state: absent
+
