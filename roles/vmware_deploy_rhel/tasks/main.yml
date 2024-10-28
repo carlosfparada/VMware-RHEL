@@ -3,7 +3,7 @@
 - name: Get template 
   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
     template_library_item: "{{ vm_template }}"
-    validate_certs: false
+    vcenter_validate_certs: false
   register: template_info
 
 - name: Get cluster info
