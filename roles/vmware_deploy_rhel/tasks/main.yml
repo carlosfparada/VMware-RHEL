@@ -13,13 +13,14 @@
 - name: Get Template Library "RHEL Templates"
   set_fact:
     template_lib: "{{ item }}"
-    template_id: "{{ item.id }}"
+    library_id: "{{ item.id }}"
   loop: "{{ content_library_info.value }}"
   when: item.name == "RHEL Templates"
 
 - name: Get template Id for {{ vm_template }}
   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
-    template_library_item: "{{ vm_template }}"
+    #template_library_item: "{{ vm_template }}"
+    template_library_item: "{{ library_id  }}"
   register: template_info
 
 - name: Get cluster info for {{ vm_cluster }}
