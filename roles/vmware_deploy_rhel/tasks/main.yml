@@ -17,10 +17,10 @@
   loop: "{{ my_content_library.value }}"
   when: item.name == "RHEL Templates"
 
-# - name: List Local Content Library
-#   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
-#     template_library_item: "RHEL Templates"
-#   register: my_content_library
+- name: List Local Content Library
+  vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
+    template_library_item: "{{ my_template_item }}"
+  register: my_content_library_item
 
 - name: Get cluster info
   vmware.vmware_rest.vcenter_cluster_info:
