@@ -1,52 +1,46 @@
 ---
 
-# - name: Get template 
-#   vmware.vmware_rest.vcenter_vmtemplate_libraryitems_info:
-#     #template_library_item: RHEL #"{{ vm_template }}"
-#     #vcenter_validate_certs: false
-#   register: template_info
+# - name: Get Local Content Library
+#   vmware.vmware_rest.content_locallibrary_info:
+#   register: content_library_info
 
-- name: Get Local Content Library
-  vmware.vmware_rest.content_locallibrary_info:
-  register: content_library_info
+# - name: Get Template Library ID for "RHEL Templates"
+#   set_fact:
+#     template_library: "{{ item.id }}"
+#   loop: "{{ content_library_info.value }}"
+#   when: item.name == "RHEL Templates"
 
-- name: Get Template Library ID for "RHEL Templates"
-  set_fact:
-    template_library: "{{ item.id }}"
-  loop: "{{ content_library_info.value }}"
-  when: item.name == "RHEL Templates"
+# - name: Get template items for {{ vm_template }}
+#   vmware.vmware_rest.content_library_item_info:
+#     library_id: "{{ template_library }}"
+#   register: template_lib_items_info
 
-- name: Get template items for {{ vm_template }}
-  vmware.vmware_rest.content_library_item_info:
-    library_id: "{{ template_library }}"
-  register: template_lib_items_info
+# - name: Get template for {{ vm_template }}
+#   set_fact:
+#     template_item: "{{ template_lib_items_info.value | selectattr('name', 'equalto', vm_template) | first }}"
 
-- name: Get template for {{ vm_template }}
-  set_fact:
-    template_item: "{{ template_lib_items_info.value | selectattr('name', 'equalto', vm_template) | first }}"
+# - name: Get cluster info for {{ vm_cluster }}
+#   vmware.vmware_rest.vcenter_cluster_info:
+#     filter_names:
+#     - "{{ vm_cluster }}"
+#   register: cluster_info
 
-- name: Get cluster info for {{ vm_cluster }}
-  vmware.vmware_rest.vcenter_cluster_info:
-    filter_names:
-    - "{{ vm_cluster }}"
-  register: cluster_info
+# - name: Get Resource info for {{ vm_cluster }}
+#   vmware.vmware_rest.vcenter_cluster_info:
+#     cluster: "{{ cluster_info.value[0].cluster }}"
+#   register: resource_pool_info
 
-- name: Get Resource info for {{ vm_cluster }}
-  vmware.vmware_rest.vcenter_cluster_info:
-    cluster: "{{ cluster_info.value[0].cluster }}"
-  register: resource_pool_info
+# - name: Get datastore info for {{ vm_datastore }}
+#   vmware.vmware_rest.vcenter_datastore_info:
+#     filter_names:
+#     - "{{ vm_datastore }}"
+#   register: datastore_info
 
-- name: Get datastore info for {{ vm_datastore }}
-  vmware.vmware_rest.vcenter_datastore_info:
-    filter_names:
-    - "{{ vm_datastore }}"
-  register: datastore_info
-
-- name: Get folder info for {{ vm_folder }}
-  vmware.vmware_rest.vcenter_folder_info:
-    filter_names:
-    - '{{ vm_folder }}'
-  register: folder_info
+# - name: Get folder info for {{ vm_folder }}
+#   vmware.vmware_rest.vcenter_folder_info:
+#     filter_names:
+#     - '{{ vm_folder }}'
+#   register: folder_info
 
 # - name: Deploy a new VM {{ vm_name }} based on template 
 #   vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
