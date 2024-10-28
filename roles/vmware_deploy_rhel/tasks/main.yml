@@ -114,19 +114,19 @@
 #     state: start
 #     vm: "{{ vm_info_new.value[0].vm }}"
 
-- name: Wait until SSH port is UP
-  ansible.builtin.wait_for:
-    port: 22
-    host: "{{ vm_ip }}"
-    #search_regex: OpenSSH
-    delay: 20
-  vars:
-    ansible_connection: local
-  ignore_errors: true
+# - name: Wait until SSH port is UP
+#   ansible.builtin.wait_for:
+#     port: 22
+#     host: "{{ vm_ip }}"
+#     #search_regex: OpenSSH
+#     delay: 20
+#   vars:
+#     ansible_connection: local
+#   ignore_errors: true
 
-- name: Sleep for 60 seconds and continue with play
-  wait_for:
-    timeout: 60
+# - name: Sleep for 60 seconds and continue with play
+#   wait_for:
+#     timeout: 60
 
 
 
