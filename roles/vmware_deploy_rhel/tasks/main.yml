@@ -72,16 +72,12 @@
     cluster: "{{ vm_cluster }}"
     datastore: "{{ vm_datastore }}"
     folder: "{{ vm_folder }}"
-    # networks:
-    #   - name: VM Network
-    #     ip: 192.168.1.100
-    #     netmask: 255.255.255.0
-    #     gateway: 192.168.1.1
-    #     mac: aa:bb:dd:aa:00:14
-    #     domain: my_domain
-    #     dns_servers:
-    #     - 192.168.1.1
-    #     - 192.168.1.2
+    networks:
+    - name: segment-sandbox-b8jvq
+      mac: aa:bb:dd:aa:00:14
+      ip: 10.10.10.100
+      netmask: 255.255.255.0
+      device_type: vmxnet3
     state: poweredon
 
 # - name: Add NIC on network with vlan id 2001
