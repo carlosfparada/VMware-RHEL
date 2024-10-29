@@ -78,6 +78,10 @@
     cluster: "{{ vm_cluster }}"
     datastore: "{{ vm_datastore }}"
     folder: "{{ vm_folder }}"
+        hardware:
+      memory_mb: 512
+      num_cpus: 4
+      scsi: paravirtual
     networks:
     - name: segment-sandbox-b8jvq
       dvswitch_name: vcsnsx-vcs-shared-private
