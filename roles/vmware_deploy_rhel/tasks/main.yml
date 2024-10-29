@@ -86,15 +86,12 @@
 
 - name: Add NIC on network with vlan id 2001
   community.vmware.vmware_guest_network:
-    hostname: "{{ vcenter_hostname }}"
-    username: "{{ vcenter_username }}"
-    password: "{{ vcenter_password }}"
-    datacenter: "{{ datacenter_name }}"
     name: segment-sandbox-b8jvq
-    state: present
+    datacenter: "{{ vm_datacenter }}"
     vlan_id: "{{ item.vlan_id | default(omit) }}"
     network_name: "{{ item.network_name | default(omit) }}"
     connected: "{{ item.connected | default(omit) }}"
+    state: present
   loop:
     - vlan_id: 2000
       connected: false
