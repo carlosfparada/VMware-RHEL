@@ -88,9 +88,12 @@
       ip: 10.10.10.100
       netmask: 255.255.255.0
       device_type: vmxnet3
-    state: poweredoff
+    state: powered-off
 
-
+- name: Start a VM
+  community.vmware.vmware_guest_powerstate:
+    name: "{{ vm_name }}"
+    state: powered-on
 
 # - name: Add NIC on network with vlan id 2001
 #   community.vmware.vmware_guest_network:
