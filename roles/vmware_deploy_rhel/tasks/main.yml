@@ -81,13 +81,13 @@
     hardware:
       memory_mb: "{{ vm_ram }}"
       num_cpus: "{{ vm_cpu }}"
-    # networks:
-    # - name: segment-sandbox-b8jvq
-    #   dvswitch_name: vcsnsx-vcs-shared-private
-    #   mac: aa:bb:dd:aa:00:14
-    #   ip: 10.10.10.100
-    #   netmask: 255.255.255.0
-    #   device_type: vmxnet3
+    networks:
+    - name: segment-sandbox-b8jvq
+      dvswitch_name: vcsnsx-vcs-shared-private
+      mac: aa:bb:dd:aa:00:14
+      ip: 10.10.10.100
+      netmask: 255.255.255.0
+      device_type: vmxnet3
     state: powered-off
 
 - name: Start a VM
