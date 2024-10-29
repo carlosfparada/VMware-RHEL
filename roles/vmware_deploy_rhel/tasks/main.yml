@@ -84,6 +84,22 @@
     #     - 192.168.1.2
     state: poweredon
 
+- name: Add NIC on network with vlan id 2001
+  community.vmware.vmware_guest_network:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    datacenter: "{{ datacenter_name }}"
+    name: segment-sandbox-b8jvq
+    state: present
+    vlan_id: "{{ item.vlan_id | default(omit) }}"
+    network_name: "{{ item.network_name | default(omit) }}"
+    connected: "{{ item.connected | default(omit) }}"
+  loop:
+    - vlan_id: 2000
+      connected: false
+    - network_name: guest-net
+      connected: true
 
 # - name: Sleep for 20 seconds and continue with play
 #   wait_for:
