@@ -65,6 +65,7 @@
 
 - name: Add Management Network VM Portgroup
   community.vmware.vmware_portgroup:
+    cluster: "{{ vm_cluster }}"
     switch: "vcsnsx-vcs-shared-private"
     portgroup: "segment-sandbox-b8jvq2"
     vlan_id: "10"
