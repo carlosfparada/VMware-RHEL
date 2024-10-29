@@ -79,7 +79,7 @@
     datastore: "{{ vm_datastore }}"
     folder: "{{ vm_folder }}"
     hardware:
-    #   memory_mb: "{{ vm_ram }}"
+      memory_mb: "{{ vm_ram }}"
       num_cpus: "{{ vm_cpu }}"
     # networks:
     # - name: segment-sandbox-b8jvq
