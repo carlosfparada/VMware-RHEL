@@ -67,8 +67,8 @@
   community.vmware.vmware_portgroup:
     cluster: "{{ vm_cluster }}"
     switch: "vcsnsx-vcs-shared-private"
-    portgroup: "segment-sandbox-b8jvq2"
-    vlan_id: "10"
+    portgroup: "segment-sandbox-b8jvq-2"
+    vlan_id: 10
 
 - name: Create a VM from a template
   community.vmware.vmware_guest:
