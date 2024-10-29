@@ -63,12 +63,12 @@
 #     #powered_on: yes
 #   register: vm_info
 
-- name: Add Management Network VM Portgroup
-  community.vmware.vmware_portgroup:
-    cluster: "{{ vm_cluster }}"
-    switch: "vcsnsx-vcs-shared-private"
-    portgroup: "segment-sandbox-b8jvq-2"
-    vlan_id: 10
+# - name: Add Management Network VM Portgroup
+#   community.vmware.vmware_portgroup:
+#     cluster: "{{ vm_cluster }}"
+#     switch: "vcsnsx-vcs-shared-private"
+#     portgroup: "segment-sandbox-b8jvq-2"
+#     vlan_id: 10
 
 - name: Create a VM from a template
   community.vmware.vmware_guest:
@@ -78,13 +78,13 @@
     cluster: "{{ vm_cluster }}"
     datastore: "{{ vm_datastore }}"
     folder: "{{ vm_folder }}"
-    # networks:
-    # - name: segment-sandbox-b8jvq
-    #   mac: aa:bb:dd:aa:00:14
-    #   ip: 10.10.10.100
-    #   netmask: 255.255.255.0
-    #   device_type: vmxnet3
-    #state: poweredon
+    networks:
+    - name: segment-sandbox-b8jvq
+      # mac: aa:bb:dd:aa:00:14
+      # ip: 10.10.10.100
+      # netmask: 255.255.255.0
+      device_type: vmxnet3
+    state: poweredon
 
 
 
