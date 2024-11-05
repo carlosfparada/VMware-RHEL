@@ -56,10 +56,10 @@
       domain: "myredhat.com"
     #state: powered-off
 
-- name: Start a VM
-  community.vmware.vmware_guest_powerstate:
-    name: "{{ vm_name }}"
-    state: powered-on
+# - name: Start a VM
+#   community.vmware.vmware_guest_powerstate:
+#     name: "{{ vm_name }}"
+#     state: powered-on
 
 
 # - name: Get Local Content Library
