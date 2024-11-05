@@ -90,7 +90,7 @@
       device_type: vmxnet3
       connected: true
       start_connected: true
-      vlan: 1
+      #vlan: 1
     state: powered-off
 
 - name: Start a VM
