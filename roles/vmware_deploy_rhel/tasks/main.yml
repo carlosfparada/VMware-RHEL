@@ -29,7 +29,7 @@
 #     folder: "{{ vm_folder }}"
 #     network_name: segment-sandbox-b8jvq
 
-- name: Update a VM from a template (1 NIC)
+- name: Create a VM from a template (1 NIC)
   community.vmware.vmware_guest:
     name: "{{ vm_name }}"
     template: "{{ vm_template }}"
