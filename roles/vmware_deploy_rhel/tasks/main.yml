@@ -82,15 +82,14 @@
       memory_mb: "{{ vm_ram }}"
       num_cpus: "{{ vm_cpu }}"
     networks:
-    #- name: NIC1
+    - device_type: vmxnet3
+      # connected: true
+      # start_connected: true
+      vlan: segment-sandbox-b8jvq    #- name: NIC1
       #dvswitch_name: vcsnsx-vcs-shared-private
       #mac: aa:bb:dd:aa:00:14
       #ip: 10.10.10.100
       #netmask: 255.255.255.0
-    - device_type: vmxnet3
-      # connected: true
-      # start_connected: true
-      vlan: segment-sandbox-b8jvq
     # customization:
     #   hostname: "BLA.BLA"
     #   #domain: "test.rh"
