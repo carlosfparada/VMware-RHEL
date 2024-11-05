@@ -1,5 +1,38 @@
 ---
 
+
+- name: Create a VM from a template
+  community.vmware.vmware_guest:
+    name: "{{ vm_name }}"
+    template: "{{ vm_template }}"
+    datacenter: "{{ vm_datacenter }}"
+    cluster: "{{ vm_cluster }}"
+    datastore: "{{ vm_datastore }}"
+    folder: "{{ vm_folder }}"
+    hardware:
+      memory_mb: "{{ vm_ram }}"
+      num_cpus: "{{ vm_cpu }}"
+    networks:
+    - vlan: segment-sandbox-b8jvq   
+      dvswitch_name: vcsnsx-vcs-shared-private
+      device_type: vmxnet3
+      mac: aa:bb:dd:aa:00:14
+      ip: 10.10.10.100
+      netmask: 255.255.255.0
+      gateway: 10.10.10.254
+      connected: true
+      start_connected: true
+    customization:
+      hostname: "myhostname"
+      domain: "myredhat.com"
+    state: powered-off
+
+- name: Start a VM
+  community.vmware.vmware_guest_powerstate:
+    name: "{{ vm_name }}"
+    state: powered-on
+
+
 # - name: Get Local Content Library
 #   vmware.vmware_rest.content_locallibrary_info:
 #   register: content_library_info
@@ -70,36 +103,6 @@
 #     portgroup: "segment-sandbox-b8jvq-2"
 #     vlan_id: 10
 
-- name: Create a VM from a template
-  community.vmware.vmware_guest:
-    name: "{{ vm_name }}"
-    template: "{{ vm_template }}"
-    datacenter: "{{ vm_datacenter }}"
-    cluster: "{{ vm_cluster }}"
-    datastore: "{{ vm_datastore }}"
-    folder: "{{ vm_folder }}"
-    hardware:
-      memory_mb: "{{ vm_ram }}"
-      num_cpus: "{{ vm_cpu }}"
-    networks:
-    - vlan: segment-sandbox-b8jvq   
-      dvswitch_name: vcsnsx-vcs-shared-private
-      device_type: vmxnet3
-      mac: aa:bb:dd:aa:00:14
-      ip: 10.10.10.100
-      netmask: 255.255.255.0
-      gateway: 10.10.10.254
-      connected: true
-      start_connected: true
-    customization:
-      hostname: "myhostname"
-      domain: "myredhat.com"
-    state: powered-off
-
-- name: Start a VM
-  community.vmware.vmware_guest_powerstate:
-    name: "{{ vm_name }}"
-    state: powered-on
 
 # - name: Add NIC on network with vlan id 2001
 #   community.vmware.vmware_guest_network:
