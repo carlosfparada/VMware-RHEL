@@ -21,7 +21,7 @@
     name: "{{ vm_name }}"
     state: powered-on
 
-- name: Add a nic on network (NIC)
+- name: Add a nic on network (+1 NIC)
   community.vmware.vmware_guest_network:
     name: "{{ vm_name }}"
     datacenter: "{{ vm_datacenter }}"
