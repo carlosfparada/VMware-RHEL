@@ -28,6 +28,7 @@
 #     cluster: "{{ vm_cluster }}"
 #     folder: "{{ vm_folder }}"
 #     network_name: segment-sandbox-b8jvq
+#     force: true
 
 - name: Create a VM from a template (1 NIC)
   community.vmware.vmware_guest:
