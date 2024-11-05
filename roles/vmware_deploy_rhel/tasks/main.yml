@@ -81,7 +81,7 @@
     hardware:
       memory_mb: "{{ vm_ram }}"
       num_cpus: "{{ vm_cpu }}"
-    networks:
+    # networks:
     #- name: NIC1
       #dvswitch_name: vcsnsx-vcs-shared-private
       #mac: aa:bb:dd:aa:00:14
