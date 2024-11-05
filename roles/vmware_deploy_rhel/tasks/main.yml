@@ -45,7 +45,7 @@
       vlan: segment-sandbox-b8jvq   
       dvswitch_name: vcsnsx-vcs-shared-private
       device_type: vmxnet3
-      mac: aa:bb:dd:aa:00:14
+      #mac: aa:bb:dd:aa:00:14
       ip: 192.168.24.100
       netmask: 255.255.255.0
       gateway: 192.168.24.1
