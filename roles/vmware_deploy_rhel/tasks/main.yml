@@ -1,5 +1,14 @@
 ---
 
+- name: Add a nic on network
+  community.vmware.vmware_guest_network:
+    name: "{{ vm_name }}"
+    template: "{{ vm_template }}"
+    datacenter: "{{ vm_datacenter }}"
+    cluster: "{{ vm_cluster }}"
+    datastore: "{{ vm_datastore }}"
+    folder: "{{ vm_folder }}"
+    network_name: segment-sandbox-b8jvq
 
 - name: Create a VM from a template
   community.vmware.vmware_guest:
