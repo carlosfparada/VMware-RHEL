@@ -22,6 +22,15 @@
       gateway: 10.10.10.254
       connected: true
       start_connected: true
+    - vlan: segment-sandbox-b8jvq   
+      dvswitch_name: vcsnsx-vcs-shared-private
+      device_type: vmxnet3
+      mac: aa:bb:dd:aa:00:15
+      ip: 10.10.10.101
+      netmask: 255.255.255.0
+      gateway: 10.10.10.254
+      connected: true
+      start_connected: true
     customization:
       hostname: "myhostname"
       domain: "myredhat.com"
