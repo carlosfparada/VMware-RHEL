@@ -85,7 +85,8 @@
     - device_type: vmxnet3
       # connected: true
       # start_connected: true
-      vlan: segment-sandbox-b8jvq    #- name: NIC1
+      vlan: segment-sandbox-b8jvq   
+      #- name: NIC1
       #dvswitch_name: vcsnsx-vcs-shared-private
       #mac: aa:bb:dd:aa:00:14
       #ip: 10.10.10.100
