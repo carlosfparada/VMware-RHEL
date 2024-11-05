@@ -82,10 +82,10 @@
       memory_mb: "{{ vm_ram }}"
       num_cpus: "{{ vm_cpu }}"
     networks:
-    - name: NIC1
+    #- name: NIC1
       #dvswitch_name: vcsnsx-vcs-shared-private
       #mac: aa:bb:dd:aa:00:14
-      ip: 10.10.10.100
+    - ip: 10.10.10.100
       netmask: 255.255.255.0
       device_type: vmxnet3
       connected: true
