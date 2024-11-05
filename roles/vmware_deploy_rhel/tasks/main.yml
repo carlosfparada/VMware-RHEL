@@ -83,8 +83,8 @@
       num_cpus: "{{ vm_cpu }}"
     networks:
     - device_type: vmxnet3
-      # connected: true
-      # start_connected: true
+      connected: true
+      start_connected: true
       vlan: segment-sandbox-b8jvq   
       #- name: NIC1
       #dvswitch_name: vcsnsx-vcs-shared-private

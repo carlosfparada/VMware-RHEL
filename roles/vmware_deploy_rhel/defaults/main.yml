@@ -11,7 +11,8 @@
 
 # rhel
 vm_name: rhel-1
-vm_template: rhel94-tpl
+#vm_template: rhel94-tpl
+vm_template: rhel94-template
 vm_datacenter: SDDC-Datacenter
 vm_cluster: Cluster-1
 vm_datastore: workload_share_dwPsq
